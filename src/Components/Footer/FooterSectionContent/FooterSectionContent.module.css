@@ -1,0 +1,36 @@
+.footer__content {
+    background-color: var(--color-fondo-celesteClaro);
+}
+
+.footer__flex {
+    display: flex;
+    align-items: center;
+    padding: 4rem 0;
+}
+
+
+/*tablet*/
+@media (max-width: 768px) {
+    .footer__flex {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 2rem 0;
+        flex-wrap: wrap;
+        height: 366px;
+        justify-content: flex-start;
+    }    
+}
+    
+/*mobile*/
+@media only screen and (max-width: 480px) {
+    .footer__flex {
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: unset;
+        padding: 1rem 0;
+        height: unset;
+    } 
+}
+  
+

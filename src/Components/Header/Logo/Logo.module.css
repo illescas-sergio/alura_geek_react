@@ -1,0 +1,17 @@
+.header__logo {
+    align-items: center;
+    display: flex;
+    height: 50px;
+    padding: 5px 0;
+}
+
+
+/*tablet*/
+@media (max-width: 768px) {
+    
+    .header__logo__img {
+        height: 28px;
+        width: 100px;
+    }
+}
+  

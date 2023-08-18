@@ -1,0 +1,22 @@
+.footer__poweredBy {
+    align-items: center;
+    background-color: var(--color-fondo-blanco);
+    display: flex;
+    height: 102px;
+    justify-content: center;
+}
+
+.poweredBy__author {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.poweredBy__authorText {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+}
