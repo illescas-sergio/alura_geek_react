@@ -1,14 +1,15 @@
+/* eslint-disable react/prop-types */
 import styles from './Card.module.css';
 
-export default function Card(){
+export default function Card({name, price, imageUrl}){
 
     return (
         <div className={styles.products__cards}>
             <div className={styles.card__img} >
-                <img className={styles.cardImg} src="/assets/products/unsplash_6FDXGY9J6y4.png" alt="producto XYZ" />
+                <img className={styles.cardImg} src={imageUrl} alt={name} />
             </div>
-            <div className={styles.card__title}>Producto XYZ</div>
-            <div className={styles.card__price}>$ 60.00</div>
+            <div className={styles.card__title}>{name}</div>
+            <div className={styles.card__price}>{price}</div>
             <a href="" className={styles.card__details}>Ver producto</a>
         </div>
     )
