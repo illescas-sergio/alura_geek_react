@@ -18,9 +18,9 @@ export default function Sections({sectionId, productos}){
                 <div className={styles.products__items}>
                 {
                     productos.map(el => {
-                        if(el.sectionId === sectionId){
+                        if(el.category === sectionId){
                             return (
-                                <Card key={el.id} name={el.name} imageUrl={el.imageUrl} price={el.price} sectionId={el.sectionId} description={el.description} id={el.id}/>
+                                <Card key={el.id} name={el.name} imageUrl={el.image} price={el.price} sectionId={el.category} description={el.description} id={el.id}/>
                             )
                         }
                     })

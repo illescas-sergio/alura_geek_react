@@ -38,12 +38,12 @@ export default function Main(){
       let sections = []
       // eslint-disable-next-line no-unused-vars
       let sectionsArray = data.forEach(el=> {
-        if(!sections.includes(el.sectionId)){
-          sections.push(el.sectionId)
+        if(!sections.includes(el.category)){
+          sections.push(el.category)
         }
       })
       console.log(sectionsArray)
-      console.log(sections)
+      console.log(data)
 
     return (
         <main className={styles.products}>
