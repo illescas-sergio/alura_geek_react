@@ -1,0 +1,110 @@
+.login {
+    background-color: var(--color-fondo-login);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5.75rem 0;
+}
+
+.login__div {
+    width: 26.4375rem;
+}
+
+.login__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.login__title {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+.login__inputEmail {
+    border: none;
+    border-bottom: 1px solid #c8c8c8;
+    border-radius: 4px;
+    padding: 1.125rem 0 1.5rem 0.75rem;
+    width: 26.4375rem;
+}
+
+.login__inputEmail::placeholder {
+    color: var(--color-placeholder);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.login__inputPassword {
+    border: none;
+    border-bottom: 1px solid #c8c8c8;
+    border-radius: 4px;
+    padding: 1.125rem 0 1.5rem 0.75rem;
+    width: 26.4375rem;
+}
+
+.login__inputPassword::placeholder {
+    color: var(--color-placeholder);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.login__buttonLogin {
+    background-color: var(--color-botones);
+    border: none;
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 18px;
+    height: 62px;
+    line-height: 21px;
+
+}
+
+.login__buttonLogin:disabled {
+    background-color: gray;
+}
+ 
+
+/*tablet*/
+@media (max-width: 768px) {
+    .login {
+        padding: 6rem 0 4.5rem 0;
+    }
+
+    .login__form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+        align-items: center;
+    }
+
+    .login__inputEmail {
+        padding: 1.125rem 0 1.5rem 0.75rem;
+        width: 17.1875rem;
+        height: 2.5625;
+    }
+    
+    .login__inputPassword {
+        border: none;
+        border-bottom: 1px solid #c8c8c8;
+        border-radius: 4px;
+        padding: 1.125rem 0 1.5rem 0.75rem;
+        width: 17.1875rem;
+        height: 2.5625;
+    }
+
+    .login__buttonLogin {
+        width: 109px;
+        height: 40px;
+    }
+}
+    
+/*mobile*/
+@media only screen and (max-width: 480px) {
+      
+}
