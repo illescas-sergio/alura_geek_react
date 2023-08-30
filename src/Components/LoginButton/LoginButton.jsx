@@ -1,10 +1,11 @@
+import { Link } from 'react-router-dom';
 import styles from './LoginButton.module.css';
 
 export default function LoginButton(){
 
     return (
-        <a >
+        <Link to={"login"} >
             <button className={styles.header__botonLogin}>Login</button>
-        </a>
+        </Link>
     )
 }

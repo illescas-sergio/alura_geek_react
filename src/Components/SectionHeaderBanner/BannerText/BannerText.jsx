@@ -1,4 +1,4 @@
-import Container from '../../../Container/Container';
+import Container from '../../Container/Container';
 import ButtonVer from '../ButtonVer/ButtonVer';
 import styles from './BannerText.module.css';
 

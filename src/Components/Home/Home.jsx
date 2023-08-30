@@ -1,9 +1,14 @@
 /* eslint-disable no-unused-vars */
 import React, {useState} from 'react';
 import Header from '../Header/Header.jsx';
+import SectionHeaderMenu from '../SectionHeaderMenu/SectionHeaderMenu.jsx';
+import SectionHeaderBanner from '../SectionHeaderBanner/SectionHeaderBanner.jsx';
+import Logo from '../Logo/Logo.jsx';
 import Main from '../Main/Main.jsx';
-import Login from '../Login/Login.jsx';
 import Footer from '../Footer/Footer.jsx';
+import SearchBar from '../SearchBar/SearchBar.jsx';
+import LoginButton from '../LoginButton/LoginButton.jsx';
+import Error from "../ErrorPage/Error.jsx";
 
 export default function Home(){
 
@@ -12,10 +17,33 @@ export default function Home(){
     });
 
     return (
+
+        state.isLoggedIn ? 
         <div>
-            <Header />
+            <Header>
+                <SectionHeaderMenu>
+                    <Logo>
+                        <SearchBar />
+                    </Logo>
+                    <LoginButton />
+                </SectionHeaderMenu>
+                <SectionHeaderBanner />
+            </Header>
             <Main />
-            <Login />
+            <Footer /> 
+        </div> :
+
+        <div>
+             <Header>
+                <SectionHeaderMenu>
+                    <Logo>
+                        <SearchBar />
+                    </Logo>
+                    <LoginButton />
+                </SectionHeaderMenu>
+                <SectionHeaderBanner />
+            </Header>
+            <Main />
             <Footer /> 
         </div>
         

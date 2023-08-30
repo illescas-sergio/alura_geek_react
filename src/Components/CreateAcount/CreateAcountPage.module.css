@@ -67,7 +67,19 @@
 .login__buttonLogin:disabled {
     background-color: gray;
 }
- 
+
+.login_crearCuenta {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px; 
+}
+
+.login_crearCuenta a {
+    color: var(--color-botones);
+    font-weight: 700; 
+}
 
 /*tablet*/
 @media (max-width: 768px) {
