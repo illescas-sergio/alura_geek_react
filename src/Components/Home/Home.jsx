@@ -9,6 +9,7 @@ import Footer from '../Footer/Footer.jsx';
 import SearchBar from '../SearchBar/SearchBar.jsx';
 import LoginButton from '../LoginButton/LoginButton.jsx';
 import Error from "../ErrorPage/Error.jsx";
+import ShowSection from '../ShowSection/ShowSection.jsx';
 
 export default function Home(){
 
@@ -16,6 +17,7 @@ export default function Home(){
         isLoggedIn: false,
     });
 
+       
     return (
 
         state.isLoggedIn ? 

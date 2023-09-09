@@ -1,10 +1,13 @@
 import './index.css'
 import React from 'react'
 import ReactDOM from 'react-dom/client';
+import {Provider} from 'react-redux';
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 import App from './App.jsx'
 import LoginPage from './Components/Login/LoginPage.jsx';
 import CreateAcount from './Components/CreateAcount/CreateAcountPage.jsx';
+import ShowSection from './Components/ShowSection/ShowSection';
+import store from './store/store.js';
 
 
 const router = createBrowserRouter([
@@ -19,8 +22,21 @@ const router = createBrowserRouter([
   {
     path: "/createAcount",
     element: <CreateAcount />
+  },
+  {
+    path: "/section/:sectionId",
+    element: <ShowSection />
   }
 ]);
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  </React.StrictMode>,
+)
+
 
 // [
 //   {
@@ -57,8 +73,3 @@ const router = createBrowserRouter([
 //   },
 // ]
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>,
-)

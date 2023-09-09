@@ -1,43 +1,46 @@
+/* eslint-disable react/prop-types */
+// import { useState } from 'react';
 import styles from './Main.module.css';
-import Sections from '../Sections/Sections.jsx';
-import { useState, useEffect } from 'react';
+// import Sections from '../Sections/Sections.jsx';
+import { useSelector } from 'react-redux';
 
 export default function Main(){
 
-    const [data, setData] = useState([]);
-  
-  
-    useEffect(()=>{
-      fetch("http://localhost:8000/products/")
-      .then(resp => resp.json())
-      .then(res => setData(res))
-      .then(data => console.log(data))
-      .catch(err => console.log(err))
-    },[])
-    
-    console.log(data)
+  //const [showSection, setShowSection] = useState("");
 
-    // eslint-disable-next-line no-unused-vars
-    
+  const data = useSelector((state) => state.data)
 
-      let sections = []
-      // eslint-disable-next-line no-unused-vars
-      let sectionsArray = data.forEach(el=> {
-        if(!sections.includes(el.category)){
-          sections.push(el.category)
-        }
-      })
-      console.log(sectionsArray)
-      console.log(data)
+  console.log(data)
+    
+      // let sections = []
+      // // eslint-disable-next-line no-unused-vars
+      // data.forEach(el=> {
+      //   if(!sections.includes(el.category)){
+      //     sections.push(el.category)
+      //   }
+      // })
 
     return (
-        <main className={styles.products}>
+
+          <main className={styles.products}>
+          {/* {
+            showSection === "" ?
+              sections.map(el => (
+                  <Sections key={el} sectionId={el} productos={data} setShowSection={setShowSection}/>
+              )) 
+              :
+              sections.filter(el => el.category === showSection).map(el => {
+                if(el.category === showSection){
+                  return <Sections key={el.name} sectionId={el} productos={data} setShowSection={setShowSection} />
+                }
+              } )            
+          } */}
             {
-                sections.map(el => (
-                    <Sections key={el} sectionId={el} productos={data}/>
-                ))
+              data.items.map(el => <h1 key={el.name}>{el.name}</h1>)
             }
-        </main>
+              
+          </main>  
+      
     )
 }
 
