@@ -3,17 +3,39 @@ import React from 'react'
 import ReactDOM from 'react-dom/client';
 import {Provider} from 'react-redux';
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
-import App from './App.jsx'
-import LoginPage from './Components/Login/LoginPage.jsx';
-import CreateAcount from './Components/CreateAcount/CreateAcountPage.jsx';
+
+import LoginPage from './pages/Login/LoginPage.jsx';
+import CreateAcount from './pages/CreateAcount/CreateAcountPage.jsx';
 import ShowSection from './Components/ShowSection/ShowSection';
 import store from './store/store.js';
+import ProductDetail from './pages/ProductDetail/ProductDetailPage.jsx';
+import Home from './pages/Home/Home.jsx';
+import App from './App.jsx';
+import LandingPage from './pages/Landing/Landing.jsx';
+import Profile from './pages/Profile/Profile.jsx';
 
 
 const router = createBrowserRouter([
+
   {
     path: "/",
+    element: <LandingPage />,
+  },
+  {
+    path: "/app",
     element: <App />,
+  },
+  {
+    path: "/home",
+    element: <Home />
+  },
+  {
+    path: "/profile",
+    element: <Profile />
+  },
+  {
+    path: "/products",
+    element: <ProductDetail />
   },
   {
     path: "/login",
@@ -37,39 +59,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   </React.StrictMode>,
 )
 
-
-// [
-//   {
-//     path: "/",
-//     element: <Root />,
-//     children: [
-//       {
-//         path: "contact",
-//         element: <Contact />,
-//       },
-//       {
-//         path: "dashboard",
-//         element: <Dashboard />,
-//         loader: ({ request }) =>
-//           fetch("/api/dashboard.json", {
-//             signal: request.signal,
-//           }),
-//       },
-//       {
-//         element: <AuthLayout />,
-//         children: [
-//           {
-//             path: "login",
-//             element: <Login />,
-//             loader: redirectIfUser,
-//           },
-//           {
-//             path: "logout",
-//             action: logoutUser,
-//           },
-//         ],
-//       },
-//     ],
-//   },
-// ]
 

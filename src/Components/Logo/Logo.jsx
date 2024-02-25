@@ -7,7 +7,7 @@ export default function Logo({children}){
     return (
     
         <div className={styles.header__logo}>
-            <Link to={"/"}>
+            <Link to={"/home"}>
                 <img src="../assets/Logo.png" alt="" className={styles.header__logo__img} />
             </Link>
            {children}

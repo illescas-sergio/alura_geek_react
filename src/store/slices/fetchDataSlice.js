@@ -2,11 +2,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const dataSlice = createSlice({
-  name: 'data',
+  name: 'fetchData',
   initialState: {
-    // Define la estructura inicial de tu estado aquí
-    items: [],
-    consulta: "Holaa!! soy el estado consulta",
     isLoading: false,
     error: null,
   },
@@ -15,9 +12,8 @@ const dataSlice = createSlice({
         console.log("cargando?")
       state.isLoading = true;
     },
-    fetchDataSuccess: (state, action) => {
+    fetchDataSuccess: (state) => {
         console.log("listo?")
-      state.items = action.payload;
       state.isLoading = false;
       state.error = null;
     },

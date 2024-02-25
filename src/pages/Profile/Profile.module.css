@@ -1,0 +1,126 @@
+.header {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile {
+    background-color: var(--color-fondo-login);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5.75rem 0;
+}
+
+.profile__div {
+    width: 26.4375rem;
+}
+
+.profile__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.profile__title {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+.profile__inputEmail {
+    border: none;
+    border-bottom: 1px solid #c8c8c8;
+    border-radius: 4px;
+    padding: 1.125rem 0 1.5rem 0.75rem;
+    width: 26.4375rem;
+}
+
+.profile__inputEmail::placeholder {
+    color: var(--color-placeholder);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.profile__inputPassword {
+    border: none;
+    border-bottom: 1px solid #c8c8c8;
+    border-radius: 4px;
+    padding: 1.125rem 0 1.5rem 0.75rem;
+    width: 26.4375rem;
+}
+
+.profile__inputPassword::placeholder {
+    color: var(--color-placeholder);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.profile__buttonLogin {
+    background-color: var(--color-botones);
+    border: none;
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 18px;
+    height: 62px;
+    line-height: 21px;
+}
+
+.profile__buttonLogin:disabled {
+    background-color: gray;
+}
+
+.profile_crearCuenta {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px; 
+}
+
+.profile_crearCuenta a {
+    color: var(--color-botones);
+    font-weight: 700; 
+}
+
+/*tablet*/
+@media (max-width: 768px) {
+    .profile {
+        padding: 6rem 0 4.5rem 0;
+    }
+
+    .profile__form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+        align-items: center;
+    }
+
+    .profile__inputEmail {
+        padding: 1.125rem 0 1.5rem 0.75rem;
+        width: 17.1875rem;
+        height: 2.5625;
+    }
+    
+    .profile__inputPassword {
+        border: none;
+        border-bottom: 1px solid #c8c8c8;
+        border-radius: 4px;
+        padding: 1.125rem 0 1.5rem 0.75rem;
+        width: 17.1875rem;
+        height: 2.5625;
+    }
+
+    .profile__buttonLogin {
+        width: 109px;
+        height: 40px;
+    }
+}
+    
+/*mobile*/
+@media only screen and (max-width: 480px) {
+      
+}

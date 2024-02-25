@@ -5,7 +5,8 @@ import Card from '../Card/Card.jsx';
 
 
 // eslint-disable-next-line no-unused-vars
-export default function ShowSection({data, sectionId, section}){
+export default function ShowSection({data, sectionId, section}){ // Entiendo que esto es "ver todos"
+
 
     const getBack = () => {
         

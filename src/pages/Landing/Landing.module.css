@@ -1,0 +1,21 @@
+.landingPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .logoContainer {
+    width: 200px; /* ajusta el tamaño según sea necesario */
+  }
+  
+  .logo {
+    width: 100%;
+  }
+  
+  .welcomeMessage {
+    margin-top: 20px; /* ajusta el margen superior según sea necesario */
+    text-align: center;
+  }
+  

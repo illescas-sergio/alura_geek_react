@@ -1,46 +1,22 @@
-/* eslint-disable react/prop-types */
-// import { useState } from 'react';
-import styles from './Main.module.css';
-// import Sections from '../Sections/Sections.jsx';
+
 import { useSelector } from 'react-redux';
+import ProductsGallery from '../ProductsGallery/ProductsGallery';
+ import SectionHeaderBanner from "../SectionHeaderBanner/SectionHeaderBanner.jsx";
+import { useEffect } from 'react';
+import Home from '../../pages/Home/Home.jsx';
 
 export default function Main(){
 
-  //const [showSection, setShowSection] = useState("");
+  const {isLoggedIn} = useSelector((state) => state.user)
 
-  const data = useSelector((state) => state.data)
+  console.log("soy el estado de user en Main", isLoggedIn)
 
-  console.log(data)
-    
-      // let sections = []
-      // // eslint-disable-next-line no-unused-vars
-      // data.forEach(el=> {
-      //   if(!sections.includes(el.category)){
-      //     sections.push(el.category)
-      //   }
-      // })
+  useEffect(() => {
+    console.log("soy el effect en Main", isLoggedIn)
+  }, [isLoggedIn])
 
     return (
-
-          <main className={styles.products}>
-          {/* {
-            showSection === "" ?
-              sections.map(el => (
-                  <Sections key={el} sectionId={el} productos={data} setShowSection={setShowSection}/>
-              )) 
-              :
-              sections.filter(el => el.category === showSection).map(el => {
-                if(el.category === showSection){
-                  return <Sections key={el.name} sectionId={el} productos={data} setShowSection={setShowSection} />
-                }
-              } )            
-          } */}
-            {
-              data.items.map(el => <h1 key={el.name}>{el.name}</h1>)
-            }
-              
-          </main>  
-      
+      isLoggedIn ? <Home /> : (<><SectionHeaderBanner /><ProductsGallery /></>)
     )
 }
 
