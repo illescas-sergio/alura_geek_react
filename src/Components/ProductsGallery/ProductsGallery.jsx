@@ -1,50 +1,43 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 // /* eslint-disable react/prop-types */
-// import { useState } from 'react';
 import styles from './ProductsGallery.module.css';
-// import Sections from '../Sections/Sections.jsx';
-
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import Card from '../Card/Card';
-// import Container from '../Container/Container';
 import { fetchProducts } from '../../services/fetchProducts';
 import { setProducts } from '../../store/slices/productsSlice';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Sections from '../Sections/Sections';
+import { fetchProductCategories } from '../../services/fetchProductCategories';
+import ShowSection from '../ShowSection/ShowSection';
 
 
-
-
-
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line no-unused-vars, react/prop-types
 export default function ProductsGallery(){
 
     const {products} = useSelector((state) => state.products);
 
     // eslint-disable-next-line no-unused-vars
-    const [showSection, setShowSection] = useState("");
+    const [detail, setDetail] = useState(false)
 
     const dispatch = useDispatch()
 
     useEffect(() => {
-        console.log("entro al useEffect")
+       
         if(products.length === 0){
-            console.log("hago el fetch")
+            
             fetchProducts()
             .then(resp => resp.json())
             .then(data => {
-                console.log(data)    
+
+                //Tengo que modificar desde acá si la data va a venir paginada!!
+                // console.log(data)
+                // const results = data.results; 
+                // dispatch(setProducts(results))
                 dispatch(setProducts(data))
-                console.log("Ya está")
             });
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-
-    useEffect(() => {
-        console.log("console numero 2")
-        console.log("products del estado", products)
-    }, [products])
+    }, [products, detail]);
 
     const sectionNames = [];
 
@@ -52,61 +45,47 @@ export default function ProductsGallery(){
         if(!sectionNames.includes(el.category)){
         sectionNames.push(el.category)
         }
-    })
+    });
+
+    const handleDetail = (string) => {
+        console.log("click en boton", string)
+        setDetail(true)
+        fetchProductCategories(string)
+            .then(resp => resp.json())
+            .then(data => {
+                dispatch(setProducts(data))
+            });
+    }
+
+    function handleBack(){
+        setDetail(false)
+        fetchProducts()
+            .then(resp => resp.json())
+            .then(data => {
+                dispatch(setProducts(data))
+            });
+    }
 
     
-
     return (
     
-        <main className={styles.main}>
-            {/* <Container> */}
-           
-            {/* {
-                products?.map(el => {
-                    return <Card key={el.name}>Soy card</Card>
-                })
-            } */}
-            {/* {
-                products?.map(el => {
-
-                   return <Card key={el.id} name={el.name} price={el.price} imageUrl={el.image}/> 
-                })
-            } */}
-            {/* </Container> */}
+        <main className={styles.main} >
             {
-                sectionNames.map(el => {
-                    console.log(sectionNames)
-                    return <Sections key={el} sectionId={el} productos={products} setShowSection={setShowSection}/>                 
-                    }) 
+                !detail ? sectionNames.map(el => {
+                    return <Sections key={el} sectionId={el} productos={products} handleDetail={handleDetail}/>                 
+                }) 
+                    
+                : 
+                    
+                (
+                    sectionNames.map(el => {
+                        return <ShowSection key={el} sectionId={el} productos={products} handleDetail={handleBack} />   
+                    })
+                )
             }
 
         </main>
     
     )
 
-//     // eslint-disable-next-line no-unused-vars
-// const [showSection, setShowSection] = useState("");
-// const data = useSelector((state) => state.data)
-// console.log(data)
-  
-// let sections = []
-// // eslint-disable-next-line no-unused-vars
-// data.items.forEach(el=> {
-//     if(!sections.includes(el.category)){
-//         sections.push(el.category)
-//     }
-// })
-
-
-//     return (
-//         <main className={styles.products}>
-            
-//             {
-//               sections.map(el => (
-//                 <Sections key={el} sectionId={el} productos={data.items} setShowSection={setShowSection}/>
-//                 )) 
-//             }
-          
-//         </main>     
-//     )
 }

@@ -19,3 +19,14 @@
     text-align: center;
   }
   
+  .entrar {
+    
+    color: #FFFFFF;
+    background-color: var(--color-botones);
+    border: none;
+    margin: 0;
+    margin-top: 5rem;
+    width: 129px;
+    height: 50px;
+  }
+  

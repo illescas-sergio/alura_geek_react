@@ -13,15 +13,13 @@ export default function LogoutButton(){
     
     const handleLogout = () => {
         
-        // Establecer el estado de autenticación como falso
-        console.log("click en logout")
         dispatch(setUserLoggedOut());
 
         fetchUserLogout()
         .then(data => {
             console.log(data)
             localStorage.removeItem('token');
-            return navigate("/app")
+            return navigate("/home")
         })
         .catch(err => {
             console.error(err)

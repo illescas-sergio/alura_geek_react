@@ -4,6 +4,7 @@ import Logo from '../../Components/Logo/Logo.jsx';
 import SectionHeaderMenu from '../../Components/SectionHeaderMenu/SectionHeaderMenu.jsx';
 import styles from './CreateAcountPage.module.css';
 import { useNavigate } from 'react-router';
+import { fetchUserRegister } from '../../services/fetchUserRegister.js';
 
 
 export default function CreateAcount(){
@@ -35,36 +36,25 @@ export default function CreateAcount(){
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        fetch("http://127.0.0.1:8000/auth/register/", {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json' // Especifica el tipo de contenido del cuerpo (body)
-              //'Authorization': `Bearer ${token}` // Encabezado de autorización
-            },
-            body: JSON.stringify({
-                email: state.email,
-                username: state.username,
-                password: state.password
-            })
-          })
+        
+        fetchUserRegister(state.email, state.username, state.password)
             .then(response => {
-            if (!response.ok) {
-                throw new Error('Ocurrió un error al realizar la solicitud.');
-            }
-                return response.json(); // Procesar la respuesta como JSON
-            })
+                if (!response.ok) {
+                    throw new Error('Ocurrió un error al realizar la solicitud.');
+                }
+                return response.json();
+            })      
             .then(data => {
-            console.log('Respuesta del servidor:', data);
+                console.log('Respuesta del servidor:', data);
                 setState({
                     email : "",
                     username: "",
                     password: ""
                 })
-                return navigate("/")
+                return navigate("/home")
             })
             .catch(error => {
-            console.error('Error:', error);
-            // Aquí puedes manejar errores en la solicitud
+                console.error('Error:', error);
             });
     }
 

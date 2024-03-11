@@ -7,38 +7,30 @@ import SearchBar from "../../Components/SearchBar/SearchBar";
 import LogoutButton from "../../Components/LogoutButton/LogoutButton";
 import Footer from "../../Components/Footer/Footer";
 import { ProfileDiv } from "../../Components/ProfileDiv/ProfileDiv";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setUserLoggedIn } from "../../store/slices/userSlice";
 
 
 export default function Profile(){
 
     const {isLoggedIn} = useSelector((state) => state.user);
 
-    const state = useSelector((state) => state.user);
-
     const {userData} = useSelector((state) => state.user);
 
-    console.log(state, userData)
+    const dispatch = useDispatch();
 
     const navigate = useNavigate();
 
+
     useEffect(() => {
         if(isLoggedIn === false || isLoggedIn === null){
-            console.log("te redirecciono por GIL")
-            return navigate("/app")
+            return navigate("/")
+        } else {
+            dispatch(setUserLoggedIn())
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    const handleChange = () => {
-
-    }
-
-
-    const handleSubmit = () => {
-
-    }
-
+    }, [isLoggedIn]);
+    
 
     return (
     
@@ -55,27 +47,19 @@ export default function Profile(){
             </header>
 
             <div className={styles.profile}>
-                    <div className={styles.profile__div}>
-                        <form className={styles.profile__form} name="form" onSubmit={handleSubmit}>
-                            <h4 className={styles.profile__title}>Datos de perfíl</h4>
-                            <input className={styles.profile__inputEmail} type="email" name="email" placeholder="Escriba su correo electrónico" required autoComplete="off" 
-                            // pattern="^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$" 
-                            onChange={handleChange}/>
-                            <input className={styles.profile__inputPassword} type="password" name="password" placeholder="Ingrese su contraseña" required 
-                            // pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{8,}$"
-                            autoComplete="off" onChange={handleChange}/>
-                            <button type="submit" className={styles.profile__buttonLogin} >Entrar</button>
-                        </form>
-                        <p className={styles.profile_crearCuenta}>¿No tiene cuenta? Puede crear una <Link to={"../createAcount"}>aquí</Link></p>   
-                    </div>    
-                </div>
-            <Footer />
-            
-            <Link to={"/home"}>
-                <button>Volver</button>        
-            </Link>
-        
-            
+                <div className={styles.profile__div}>
+                    <form className={styles.profile__form} name="form" id="profileForm">
+                        <h4 className={styles.profile__title}>Datos de perfíl</h4>
+                        <input className={styles.profile__inputEmail} type="email" name="email" value={userData.email} readOnly/>
+                        <input className={styles.profile__inputPassword} type="text" name="username" value={userData.username} readOnly/>
+                        <Link to={"/editprofile"}><button className={styles.profile__buttonLogin} >Editar</button></Link>
+                    </form>
+                    <p className={styles.profile_crearCuenta}><Link to={"/home"}>Volver</Link></p>   
+                </div>    
+            </div>
+
+            <Footer /> 
+
         </>
         
     )

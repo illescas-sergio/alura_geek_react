@@ -14,12 +14,12 @@ const userSlice = createSlice({
     setUserLoggedOut: (state) => {
       state.isLoggedIn = false;
     },
-    fetchUserData: (state, action) => {
+    setUserData: (state, action) => {
       state.userData = action.payload;
     },
   },
 });
 
-export const { setUserLoggedIn, setUserLoggedOut, fetchUserData } = userSlice.actions;
+export const { setUserLoggedIn, setUserLoggedOut, setUserData } = userSlice.actions;
 
 export default userSlice.reducer;

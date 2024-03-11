@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import LoginButton from '../LoginButton/LoginButton';
 import Logo from '../Logo/Logo';
 import LogoutButton from '../LogoutButton/LogoutButton';
@@ -11,7 +11,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setUserLoggedIn, setUserLoggedOut } from '../../store/slices/userSlice';
 
 
-useState
 // eslint-disable-next-line react/prop-types
 export default function Header({children}){
 
@@ -19,20 +18,18 @@ export default function Header({children}){
 
     const {isLoggedIn} = useSelector((state) => state.user);
 
-    console.log("soy el estado de user en Header", isLoggedIn)
-
     useEffect(() => {
        
         const token = localStorage.getItem('token');
 
-        if(token){
-            dispatch(setUserLoggedIn());
-        } else {
+        if(!token){
             dispatch(setUserLoggedOut());
+        } else {
+            dispatch(setUserLoggedIn());
         }
         
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [isLoggedIn])
     
     
     return (
