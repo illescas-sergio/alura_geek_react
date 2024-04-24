@@ -84,7 +84,9 @@ export default function Login(){
                             autoComplete="off" onChange={handleChange}/>
                             <button type="submit" className={styles.login__buttonLogin} >Entrar</button>
                         </form>
-                        <p className={styles.login_crearCuenta}>¿No tiene cuenta? Puede crear una <Link to={"../createAcount"}>aquí</Link></p>   
+                        <p className={styles.login_crearCuenta}>¿No tiene cuenta? Puede crear una <Link to={"../createAcount"}>aquí</Link></p>
+                        <p className={styles.login_crearCuenta}>o</p>
+                        <p className={styles.login_crearCuenta}>Haga click en <Link to={"/home"}>volver</Link> para seguir navegando</p>
                     </div>    
                 </div>
             <Footer />

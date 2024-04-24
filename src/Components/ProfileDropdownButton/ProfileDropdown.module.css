@@ -1,0 +1,46 @@
+/* Estilos personalizados */
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .headerBotonLogin {
+    align-items: center;
+    background-color: var(--color-fondo-blanco);
+    border: 1px solid var(--color-botones);
+    color: var(--color-botones);
+    display: flex;
+    height: 51px;
+    justify-content: center;
+    padding: 16px;
+    width: 182px;
+  }
+  
+  .dropdownMenu {
+    display: none; /* Oculta el menú por defecto */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--color-fondo-blanco);
+    border: 1px solid rgba(0,0,0,.15); /* Borde del menú */
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.1); /* Sombra */
+    width: 100%;
+    z-index: 1000;
+  }
+  
+  .dropdownMenu.show {
+    display: block; /* Muestra el menú cuando está abierto */
+  }
+  
+  .dropdownMenu a {
+    display: block;
+    padding: 10px 20px;
+    color: #333; /* Color del texto de las opciones */
+    text-decoration: none;
+  }
+  
+  .dropdownMenu a:hover {
+    background-color: #f8f9fa; /* Color de fondo al pasar el cursor sobre las opciones */
+  }
+  

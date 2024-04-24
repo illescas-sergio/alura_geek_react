@@ -29,7 +29,7 @@ export default function LogoutButton(){
 
     return (
         <Link >
-            <button onClick={handleLogout} className={styles.header__botonLogin}>Cerrar Sesión</button>
+            <button onClick={handleLogout} className={styles.logout__button}>Cerrar Sesión</button>
         </Link>
     )
 }

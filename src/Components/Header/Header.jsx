@@ -1,14 +1,13 @@
 import { useEffect } from 'react';
 import LoginButton from '../LoginButton/LoginButton';
 import Logo from '../Logo/Logo';
-import LogoutButton from '../LogoutButton/LogoutButton';
-import ProfileButton from '../ProfileButton/ProfileButton';
 import { ProfileDiv } from '../ProfileDiv/ProfileDiv';
 import SearchBar from '../SearchBar/SearchBar';
 import SectionHeaderMenu from '../SectionHeaderMenu/SectionHeaderMenu';
 import styles from './Header.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUserLoggedIn, setUserLoggedOut } from '../../store/slices/userSlice';
+import ProfileDropdown from '../ProfileDropdownButton/ProfileDropButton';
 
 
 // eslint-disable-next-line react/prop-types
@@ -40,8 +39,7 @@ export default function Header({children}){
                         </Logo>
                         {isLoggedIn ? (
                             <ProfileDiv>
-                                <ProfileButton />
-                                <LogoutButton />
+                                <ProfileDropdown />
                             </ProfileDiv>
                             ) : (
                             <LoginButton />

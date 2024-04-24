@@ -1,4 +1,4 @@
-.profile__button {
+.myProducts__button {
     background-color: var(--color-fondo-blanco);
     border: none;
     color: var(--color-fuente);
@@ -11,7 +11,7 @@
     width: 100%;
 }
 
-.profile__button:hover {
+.myProducts__button:hover {
     
     border: 1px solid var(--color-fuente);
     
@@ -20,7 +20,7 @@
 /*tablet*/
 @media (max-width: 768px) {
 
-    .profile__button {
+    .myProducts__button {
         font-weight: 600;
         font-size: 14px;
         line-height: 16px;
@@ -32,7 +32,7 @@
 /*mobile*/
 @media only screen and (max-width: 480px) {
 
-    .profile__button {
+    .myProducts__button {
         font-weight: 600;
         font-size: 14px;
         line-height: 16px;

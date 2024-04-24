@@ -1,28 +1,47 @@
+import { useSelector } from "react-redux";
+import Container from "../../Components/Container/Container";
+import styles from "./ProductDetail.module.css";
+import { useEffect } from "react";
+import BuyButton from "../../Components/BuyButton/BuyButton";
 
 
+export default function ProductDetail(){  
+    
+    const {detail} = useSelector(state => state.products)
 
+    useEffect(() => {
 
+    }, [detail])
 
-
-export default function ProductDetail(){    
 
     return (
-        <div className="detalle__producto--div">            
-            <section className="detalle__producto__principal container" data-detalle >
-                <div className="detalle__producto__principal--div">
-                    <div className="detalle__producto__principal--img">
-                        <img src="/assets/products/unsplash_0POwK6iAiRQ.png" alt=""></img>
-                    </div>
-                    <div className="detalle__producto__principal--descripcion">
-                        <div className="detalle__menu-extra container"><button>...</button></div>
-                        <div className="detalle__producto__titulo">Producto XYZ</div>
-                        <div className="detalle__producto__precio">$ 60.00</div>
-                        <div className="detalle__producto__descripcion">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim maxime consectetur eveniet aut voluptatem voluptatum minus debitis. Vitae doloremque iste nam est, voluptatem voluptas, commodi quia eum totam quaerat hic!</div>
-                    </div>
-                </div> 
-            </section>
-            
+        <main className={styles.detalle__producto}>
+            <div className={styles.detalle__productoDiv}>            
+                <section className={styles.detalle__producto__principal} >
+                    <Container>
+                        <div className={styles.detalle__producto__principalDiv}>
+                            <div className={styles.detalle__producto__principalImg}>
+                                <img src="/assets/products/unsplash_0POwK6iAiRQ.png" alt="" />
+                            </div>
+                            <div className={styles.detalle__producto__principalDescripcion}>
+                                {/* <Container>
+                                    <div className={styles.detalle__menuExtra}><button>...</button></div>
+                                </Container> */}
+                                
+                                <div className={styles.detalle__producto__titulo}>{detail.product_name}</div>
+                                <div className={styles.detalle__producto__precio}>${detail.price}</div>
+                                <div className={styles.detalle__producto__descripcion}>{detail.product_description}</div>
+                            </div>
+                        </div>
+                    </Container> 
+                </section>
 
-        </div>
+                <Container>
+                    <BuyButton />
+                </Container>
+
+                
+            </div>
+        </main>
     )
 }

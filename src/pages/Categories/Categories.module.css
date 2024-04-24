@@ -1,9 +1,6 @@
-.main {
-    padding: 4rem 0;
-}
 .productos {
     background-color: var(--color-fondo-noTanBlanco);
-    display: flex;
+    /* display: flex; */
     gap: 4rem;
     padding: 4rem 0;
     width: 100%;

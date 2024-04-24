@@ -6,7 +6,7 @@ export default function ProfileButton(){
 
     return (
         <Link to={"/profile"}>
-            <button className={styles.header__botonProfile}>Mi perfil</button>
+            <button className={styles.profile__button}>Mi perfil</button>
         </Link>
     )
 }

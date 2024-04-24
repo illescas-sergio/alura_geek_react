@@ -1,26 +1,25 @@
-.profile__button {
-    background-color: var(--color-fondo-blanco);
-    border: none;
-    color: var(--color-fuente);
+.divContainer {
     display: flex;
-    font-weight: 700;
-    font-size: 16px;
-    height: 24px;
     justify-content: center;
-    line-height: 19px;
-    width: 100%;
 }
 
-.profile__button:hover {
-    
-    border: 1px solid var(--color-fuente);
-    
+.buyButton {
+    align-items: center;
+    background-color: var(--color-botones);
+    border: 1px solid var(--color-botones);
+    color: var(--color-fondo-blanco);
+    display: flex;
+    height: 51px;
+    justify-content: center;
+    padding: 16px;
+    width: 182px;   
 }
+
 
 /*tablet*/
 @media (max-width: 768px) {
 
-    .profile__button {
+    .buyButton {
         font-weight: 600;
         font-size: 14px;
         line-height: 16px;
@@ -32,7 +31,7 @@
 /*mobile*/
 @media only screen and (max-width: 480px) {
 
-    .profile__button {
+    .buyButton {
         font-weight: 600;
         font-size: 14px;
         line-height: 16px;

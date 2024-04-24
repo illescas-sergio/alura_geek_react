@@ -6,6 +6,7 @@
 .profile {
     background-color: var(--color-fondo-login);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 5.75rem 0;
@@ -98,6 +99,11 @@
     font-weight: 600;
     font-size: 18px;
     line-height: 21px;
+}
+
+
+.marginDivOwner {
+    margin-top: 10rem;
 }
 
 /*tablet*/

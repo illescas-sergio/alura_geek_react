@@ -1,14 +1,15 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import styles from "./Profile.module.css";
-import SectionHeaderMenu from "../../Components/SectionHeaderMenu/SectionHeaderMenu";
-import Logo from "../../Components/Logo/Logo";
-import SearchBar from "../../Components/SearchBar/SearchBar";
-import LogoutButton from "../../Components/LogoutButton/LogoutButton";
-import Footer from "../../Components/Footer/Footer";
-import { ProfileDiv } from "../../Components/ProfileDiv/ProfileDiv";
+// import SectionHeaderMenu from "../../Components/SectionHeaderMenu/SectionHeaderMenu";
+// import Logo from "../../Components/Logo/Logo";
+// import SearchBar from "../../Components/SearchBar/SearchBar";
+// import LogoutButton from "../../Components/LogoutButton/LogoutButton";
+// import Footer from "../../Components/Footer/Footer";
+// import { ProfileDiv } from "../../Components/ProfileDiv/ProfileDiv";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserLoggedIn } from "../../store/slices/userSlice";
+import SimilProds from "../../Components/SimilProds/SimilProds";
 
 
 export default function Profile(){
@@ -35,17 +36,6 @@ export default function Profile(){
     return (
     
         <>
-            <header className={styles.header}>
-                <SectionHeaderMenu>
-                    <Logo>
-                        <SearchBar />
-                    </Logo>
-                    <ProfileDiv>
-                        <LogoutButton />
-                    </ProfileDiv>
-                </SectionHeaderMenu>
-            </header>
-
             <div className={styles.profile}>
                 <div className={styles.profile__div}>
                     <form className={styles.profile__form} name="form" id="profileForm">
@@ -55,11 +45,11 @@ export default function Profile(){
                         <Link to={"/editprofile"}><button className={styles.profile__buttonLogin} >Editar</button></Link>
                     </form>
                     <p className={styles.profile_crearCuenta}><Link to={"/home"}>Volver</Link></p>   
-                </div>    
+                </div>
+                <div className={styles.marginDivOwner}>
+                    <SimilProds category={"categoría TRES"}/>    
+                </div>
             </div>
-
-            <Footer /> 
-
         </>
         
     )

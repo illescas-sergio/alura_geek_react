@@ -5,6 +5,7 @@ import SectionHeaderMenu from '../../Components/SectionHeaderMenu/SectionHeaderM
 import styles from './CreateAcountPage.module.css';
 import { useNavigate } from 'react-router';
 import { fetchUserRegister } from '../../services/fetchUserRegister.js';
+import { Link } from 'react-router-dom';
 
 
 export default function CreateAcount(){
@@ -78,6 +79,7 @@ export default function CreateAcount(){
                             // pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{8,}$" 
                             autoComplete="off" onChange={handleChange} value={state.password}/>
                             <button type="submit" className={styles.login__buttonLogin} >Crear</button>
+                            <p className={styles.login_crearCuenta}>Haga click en <Link to={"/home"}>volver</Link> para seguir navegando</p>
                         </form>
                     </div>    
                 </div>
