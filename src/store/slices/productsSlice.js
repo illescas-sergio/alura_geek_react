@@ -25,9 +25,12 @@ const productsSlice = createSlice({
         },
         setUsersProducts: (state, action) => {
             state.usersProducts = action.payload || initialState
+        },
+        deleteUsersProduct: (state, action) => {
+            state.usersProducts = state.usersProducts.filter(el => el.id !== action.payload)
         }
     },
 });
 
-export const { setProducts, filterProducts, setCategory, setDetail, setUsersProducts } = productsSlice.actions;
+export const { setProducts, filterProducts, setCategory, setDetail, setUsersProducts, deleteUsersProduct } = productsSlice.actions;
 export default productsSlice.reducer;

@@ -4,11 +4,11 @@
 }
 
 .buyButton {
-    align-items: center;
+    
     background-color: var(--color-botones);
     border: 1px solid var(--color-botones);
     color: var(--color-fondo-blanco);
-    display: flex;
+    
     height: 51px;
     justify-content: center;
     padding: 16px;

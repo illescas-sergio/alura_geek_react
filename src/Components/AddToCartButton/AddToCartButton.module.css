@@ -1,0 +1,53 @@
+.divContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.buy1234Button {
+    align-items: center;
+    background-color: var(--color-botones);
+    border: 1px solid var(--color-botones);
+    color: var(--color-fondo-blanco);
+    display: flex;
+    height: 51px;
+    justify-content: center;
+    padding: 16px;
+    width: 182px;   
+}
+
+.buyButton {
+    align-items: center;
+    background-color: var(--color-fondo-blanco);
+    border: 1px solid var(--color-botones);
+    color: var(--color-botones);
+    display: flex;
+    height: 51px;
+    justify-content: center;
+    padding: 16px;
+    width: 182px;   
+}
+
+
+/*tablet*/
+@media (max-width: 768px) {
+
+    .buyButton {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 16px;
+        height: 40px;
+        width: 166px;     
+    }  
+}
+  
+/*mobile*/
+@media only screen and (max-width: 480px) {
+
+    .buyButton {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 16px;
+        height: 40px;
+        width: 133px;     
+    }      
+}

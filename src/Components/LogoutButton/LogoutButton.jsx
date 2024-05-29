@@ -19,7 +19,7 @@ export default function LogoutButton(){
         .then(data => {
             console.log(data)
             localStorage.removeItem('token');
-            return navigate("/home")
+            return navigate("/logout")
         })
         .catch(err => {
             console.error(err)

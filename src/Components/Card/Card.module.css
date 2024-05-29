@@ -6,6 +6,7 @@
 .card__img {
     height: 174px;
     width: 100%;
+    position: relative;
     
 }
 
@@ -34,4 +35,25 @@
     font-weight: 700;
     font-size: 16px;
     line-height: 19px;
+}
+
+.editIcon {
+    z-index: 1;
+    position: absolute;
+    left: 90%;
+}
+
+.editIcon:hover {
+    cursor: pointer;
+}
+
+.deleteIcon {
+    z-index: 1;
+    position: absolute;
+    left: 90%;
+    top: 15%;
+}
+
+.deleteIcon:hover {
+    cursor: pointer;
 }

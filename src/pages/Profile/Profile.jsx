@@ -9,7 +9,6 @@ import styles from "./Profile.module.css";
 // import { ProfileDiv } from "../../Components/ProfileDiv/ProfileDiv";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserLoggedIn } from "../../store/slices/userSlice";
-import SimilProds from "../../Components/SimilProds/SimilProds";
 
 
 export default function Profile(){
@@ -45,9 +44,6 @@ export default function Profile(){
                         <Link to={"/editprofile"}><button className={styles.profile__buttonLogin} >Editar</button></Link>
                     </form>
                     <p className={styles.profile_crearCuenta}><Link to={"/home"}>Volver</Link></p>   
-                </div>
-                <div className={styles.marginDivOwner}>
-                    <SimilProds category={"categoría TRES"}/>    
                 </div>
             </div>
         </>

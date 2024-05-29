@@ -2,16 +2,20 @@ import { useSelector } from "react-redux";
 import Container from "../../Components/Container/Container";
 import styles from "./ProductDetail.module.css";
 import { useEffect } from "react";
-import BuyButton from "../../Components/BuyButton/BuyButton";
+import ButtonsConsole from "../../Components/ButtonsConsole/ButtonsConsole";
+import AddToCartButton from "../../Components/AddToCartButton/AddToCartButton.jsx";
+import BuyButton from "../../Components/BuyButton/BuyButton.jsx";
+
 
 
 export default function ProductDetail(){  
     
-    const {detail} = useSelector(state => state.products)
+    const {detail} = useSelector(state => state.products);
+    const {user} = useSelector(state => state.user)
 
     useEffect(() => {
-
-    }, [detail])
+        console.log(detail, user)
+    }, [detail, user])
 
 
     return (
@@ -36,11 +40,11 @@ export default function ProductDetail(){
                     </Container> 
                 </section>
 
-                <Container>
+                <ButtonsConsole>
+                    <AddToCartButton />
                     <BuyButton />
-                </Container>
+                </ButtonsConsole>
 
-                
             </div>
         </main>
     )

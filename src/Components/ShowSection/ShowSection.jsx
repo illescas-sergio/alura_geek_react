@@ -32,7 +32,5 @@ export default function ShowSection({sectionId, products}){
             </Container>  
         </section>
 
-        
-        
     )
 }

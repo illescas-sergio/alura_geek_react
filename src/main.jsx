@@ -16,6 +16,10 @@ import Home from "./pages/Home/Home.jsx"
 // import ShowSection from './Components/ShowSection/ShowSection.jsx';
 import Categories from './pages/Categories/Categories.jsx';
 import MyProducts from './pages/MyProducts/MyProducts.jsx';
+import LogoutSuccess from './pages/LogoutSuccess/LogoutSuccess.jsx';
+
+import AddProductSuccess from './pages/AddProductSuccess/AddProductSuccess.jsx';
+import AddAndEditProducts from './pages/AddAndEditProducts/AddAndEditProducts.jsx';
 
 
 
@@ -45,6 +49,18 @@ const router = createBrowserRouter([
         element: <MyProducts />
       },
       {
+        path: "/addProducts",
+        element: <AddAndEditProducts />
+      },
+      {
+        path: "/addProductSuccess",
+        element: <AddProductSuccess />
+      },
+      {
+        path: "/product/edit/:id",
+        element: <AddAndEditProducts />
+      },
+      {
         path: "/profile",
         element: <Profile />
       },
@@ -62,6 +78,10 @@ const router = createBrowserRouter([
     path: "/createAcount",
     element: <CreateAcount />
   },
+  {
+    path: "/logout",
+    element: <LogoutSuccess />
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

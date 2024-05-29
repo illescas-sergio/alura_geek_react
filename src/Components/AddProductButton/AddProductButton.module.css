@@ -1,29 +1,25 @@
-.logout__button {
-    background-color: var(--color-fondo-blanco);
-    border: none;
-    color: var(--color-botones);
-    display: flex;
-    font-weight: 700;
-    font-size: 16px;
-    height: 24px;
-    justify-content: center;
-    line-height: 19px;
+.divButton {
     width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 3.5rem;
 }
 
-.logout__button:hover {
-    
+.addProductButton { 
+    background-color: var(--color-botones);
     border: 1px solid var(--color-botones);
-    color: var(--color-fuente);
-    font-weight: 700;
-    
+    color: var(--color-fondo-blanco);
+    height: 51px;
+    justify-content: center;
+    padding: 16px;
+    width: 182px;   
 }
 
 
 /*tablet*/
 @media (max-width: 768px) {
 
-    .logout__button {
+    .addProductButton {
         font-weight: 600;
         font-size: 14px;
         line-height: 16px;
@@ -35,7 +31,7 @@
 /*mobile*/
 @media only screen and (max-width: 480px) {
 
-    .logout__button {
+    .addProductButton {
         font-weight: 600;
         font-size: 14px;
         line-height: 16px;

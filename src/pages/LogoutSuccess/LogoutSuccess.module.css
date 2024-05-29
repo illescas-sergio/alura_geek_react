@@ -1,0 +1,13 @@
+.logoutSuccessPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .linkToHome {
+    color: var(--color-botones);
+    font-weight: bold;
+  }
+  

@@ -36,7 +36,7 @@
   .dropdownMenu a {
     display: block;
     padding: 10px 20px;
-    color: #333; /* Color del texto de las opciones */
+    /* color: #333; Color del texto de las opciones */
     text-decoration: none;
   }
   
