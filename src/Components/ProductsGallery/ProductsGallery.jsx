@@ -40,7 +40,7 @@ export default function ProductsGallery(){
         }
     });
 
-        
+           
     return (
     
         <main className={styles.main} >

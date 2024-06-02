@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import ButtonsConsole from "../../Components/ButtonsConsole/ButtonsConsole";
 import AddToCartButton from "../../Components/AddToCartButton/AddToCartButton.jsx";
 import BuyButton from "../../Components/BuyButton/BuyButton.jsx";
+import SimilProds from "../../Components/SimilProds/SimilProds.jsx";
 
 
 
@@ -17,6 +18,8 @@ export default function ProductDetail(){
         console.log(detail, user)
     }, [detail, user])
 
+    console.log(detail)
+
 
     return (
         <main className={styles.detalle__producto}>
@@ -25,7 +28,7 @@ export default function ProductDetail(){
                     <Container>
                         <div className={styles.detalle__producto__principalDiv}>
                             <div className={styles.detalle__producto__principalImg}>
-                                <img src="/assets/products/unsplash_0POwK6iAiRQ.png" alt="" />
+                                <img src={detail.product_image} alt="" />
                             </div>
                             <div className={styles.detalle__producto__principalDescripcion}>
                                 {/* <Container>
@@ -44,6 +47,8 @@ export default function ProductDetail(){
                     <AddToCartButton />
                     <BuyButton />
                 </ButtonsConsole>
+
+                <SimilProds category={detail.category}/>
 
             </div>
         </main>

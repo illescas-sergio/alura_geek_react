@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 
 // eslint-disable-next-line no-unused-vars
-export default function ShowSection({sectionId, products}){ 
+export default function ShowSection({sectionId, products, product_id}){ 
 
     return (
         
@@ -20,6 +20,13 @@ export default function ShowSection({sectionId, products}){
                 </div>
                 <div className={styles.products__items}>
                 {
+                    product_id ? products.filter(el => el.id !== product_id).map(el => {
+                        if(el.category === sectionId)
+                            return (
+                                <Card key={el.id} name={el.product_name} imageUrl={el.product_image} price={el.price} sectionId={el.category} description={el.product_description} id={el.id}/>
+                            )
+                    }) : 
+
                     products.map(el => {
                         if(el.category === sectionId)
                             return (

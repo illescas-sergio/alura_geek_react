@@ -19,7 +19,6 @@ export default function Card({id, name, price, imageUrl, my_products = null, han
         fetchProductDetails(idProducto)
         .then(resp => resp.json())
         .then(data => {
-            
             dispatch(setDetail(data))
         })
 

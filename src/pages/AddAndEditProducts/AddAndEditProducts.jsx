@@ -120,9 +120,9 @@ export default function AddAndEditProducts() {
         product_description: ""
     });
 
-    const [isEditMode, setIsEditMode] = useState(false);
+    const [image, setImage] = useState(null);
 
-    console.log(id)
+    const [isEditMode, setIsEditMode] = useState(false);
 
     useEffect(() => {
         if (id) {
@@ -150,10 +150,14 @@ export default function AddAndEditProducts() {
         }));
     }
 
+    const handleImageChange = (e) => {
+        setImage(e.target.files[0]);
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         if (isEditMode) {
-            updateProduct(id, state.product_name, state.price, state.category, state.product_description)
+            updateProduct(id, state.product_name, state.price, state.category, state.product_description, image)
                 .then(resp => resp.json())
                 .then(data => {
                     console.log(data);
@@ -168,7 +172,7 @@ export default function AddAndEditProducts() {
                 })
                 .catch(err => console.log(err));
         } else {
-            postNewProducts(state.product_name, state.price, state.category, state.product_description)
+            postNewProducts(state.product_name, state.price, state.category, state.product_description, image)
                 .then(resp => resp.json())
                 .then(data => {
                     console.log(data);
@@ -188,7 +192,7 @@ export default function AddAndEditProducts() {
     return (
         <div className={styles.addProducts}>
             <div className={styles.addProducts__div}>
-                <form className={styles.addProducts__form} name="form" onSubmit={handleSubmit} id="addProductForm">
+                <form className={styles.addProducts__form} name="form" onSubmit={handleSubmit} id="addProductForm" encType="multipart/form-data">
                     <h4 className={styles.addProducts__title}>{isEditMode ? 'Editar producto' : 'Agregar producto'}</h4>
                     
                     <input
@@ -227,7 +231,7 @@ export default function AddAndEditProducts() {
                         onChange={handleChange}
                     />
                     
-                    {/* <input className={styles.addProducts__fileInput} id="product_image" type="file" name="product_image" placeholder="Puedes subir una imagen del producto" onChange={handleChange}/> */}
+                    <input className={styles.addProducts__fileInput} id="product_image" type="file" name="product_image" placeholder="Puedes subir una imagen del producto" onChange={handleImageChange}/>
                     
                     <button type="submit" className={styles.profile__buttonLogin}>
                         {isEditMode ? 'Actualizar' : 'Agregar'}

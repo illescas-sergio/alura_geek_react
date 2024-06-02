@@ -6,8 +6,6 @@ import styles from "./SimilProds.module.css";
 // eslint-disable-next-line react/prop-types
 export default function SimilProds({category}){
 
-    console.log(category)
-
 
     return (
         <section className={styles.detalle__productosSimilares}>

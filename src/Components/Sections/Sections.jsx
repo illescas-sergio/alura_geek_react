@@ -14,7 +14,7 @@ export default function Sections({sectionId, productos}){
     const dispatch = useDispatch()
 
     const handleClick = () => {
-        console.log("fetch a ", sectionId)
+        // console.log("fetch a ", sectionId)
         fetchProductCategories(sectionId)
         .then(res => res.json())
         .then(data => {
@@ -22,7 +22,6 @@ export default function Sections({sectionId, productos}){
         })
         .catch(err => console.log(err))
     }
-
     
     return (
         <section className={styles.products__group}>
@@ -38,7 +37,7 @@ export default function Sections({sectionId, productos}){
                     productos.map(el => {
                         if(el.category === sectionId){
                             return (
-                                <Card key={el.id} name={el.product_name} imageUrl={el.image} price={el.price} sectionId={el.category} description={el.description} id={el.id}/>
+                                <Card key={el.id} name={el.product_name} imageUrl={el.product_image} price={el.price} sectionId={el.category} description={el.description} id={el.id}/>
                             )
                         }
                     })

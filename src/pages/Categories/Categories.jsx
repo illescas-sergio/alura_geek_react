@@ -16,6 +16,9 @@ export default function Categories({product_category = null}){
 
     const {selectedCategory} = useSelector(state => state.products)
 
+    const {id} = useParams();
+    console.log("soy id de producto", id)
+
 
     useEffect(() => {
         if(!category && product_category){
@@ -31,7 +34,7 @@ export default function Categories({product_category = null}){
 
     return (
         <main className={styles.productos}>
-            <ShowSection sectionId={product_category || category} products={selectedCategory}/>
+            <ShowSection sectionId={product_category || category} products={selectedCategory} product_id={id} />
         </main>
     )
 }
