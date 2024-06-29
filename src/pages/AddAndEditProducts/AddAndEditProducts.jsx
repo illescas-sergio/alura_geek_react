@@ -231,7 +231,7 @@ export default function AddAndEditProducts() {
                         onChange={handleChange}
                     />
                     
-                    <input className={styles.addProducts__fileInput} id="product_image" type="file" name="product_image" placeholder="Puedes subir una imagen del producto" onChange={handleImageChange}/>
+                    <input className={styles.addProducts__fileInput} id="product_image" type="file" name="product_image" placeholder="Puedes subir una imagen del producto" onChange={handleImageChange} />
                     
                     <button type="submit" className={styles.profile__buttonLogin}>
                         {isEditMode ? 'Actualizar' : 'Agregar'}

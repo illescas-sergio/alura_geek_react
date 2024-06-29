@@ -26,12 +26,25 @@
 // }
 
 export function updateProduct(productId, product_name, price, category, product_description, image) {
+
     const token = localStorage.getItem('token');
+
+    console.log("soy price", price)
+
+    // Convertir price a float
+    const priceFloat = parseFloat(price);
+
+    if (isNaN(priceFloat)) {
+        alert('Please enter a valid number for the price');
+        return Promise.reject('Invalid price');
+    }
+
+    console.log("soy priceFloat", priceFloat)
 
     // Crear un objeto FormData para enviar datos multipart/form-data
     const formData = new FormData();
     formData.append('product_name', product_name);
-    formData.append('price', price);
+    formData.append('price', priceFloat);
     formData.append('category', category);
     formData.append('product_description', product_description);
     formData.append('product_image', image); // Agregar la imagen al formulario

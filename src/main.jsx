@@ -50,7 +50,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/addProducts",
-        element: <AddAndEditProducts />
+        element: <AddAndEditProducts />,
       },
       {
         path: "/addProductSuccess",
@@ -58,11 +58,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/product/edit/:id",
-        element: <AddAndEditProducts />
+        element: <AddAndEditProducts />,
       },
       {
         path: "/profile",
-        element: <Profile />
+        element: <Profile />,
       },
       {
         path: "/editprofile",
@@ -85,11 +85,9 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  <React.StrictMode>  
     <Provider store={store}>
       <RouterProvider router={router} />
     </Provider>
   </React.StrictMode>,
 )
-
-

@@ -63,7 +63,7 @@ export default function Login(){
             })
             .catch(error => {
             console.error('Error:', error);
-                return navigate("/app")
+                return navigate("/")
             });
     }
 
