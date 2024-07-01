@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import Container from "../../Components/Container/Container";
 import styles from "./ProductDetail.module.css";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import ButtonsConsole from "../../Components/ButtonsConsole/ButtonsConsole";
 import AddToCartButton from "../../Components/AddToCartButton/AddToCartButton.jsx";
 import BuyButton from "../../Components/BuyButton/BuyButton.jsx";
@@ -12,15 +12,9 @@ import SimilProds from "../../Components/SimilProds/SimilProds.jsx";
 export default function ProductDetail(){  
     
     const {detail} = useSelector(state => state.products);
-    const {user} = useSelector(state => state.user)
-
-    useEffect(() => {
-        console.log(detail, user)
-    }, [detail, user])
-
-    console.log(detail)
-
-
+    const {isLoggedIn} = useSelector(state => state.user)
+        
+    
     return (
         <main className={styles.detalle__producto}>
             <div className={styles.detalle__productoDiv}>            
@@ -44,7 +38,10 @@ export default function ProductDetail(){
                 </section>
 
                 <ButtonsConsole>
-                    <AddToCartButton />
+                    {
+                        isLoggedIn && <AddToCartButton />
+                    }
+                                        
                     <BuyButton />
                 </ButtonsConsole>
 

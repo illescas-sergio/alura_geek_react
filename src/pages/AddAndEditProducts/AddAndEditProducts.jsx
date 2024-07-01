@@ -1,102 +1,3 @@
-// import styles from "./AddProducts.module.css";
-// import { useEffect, useState } from "react";
-// import { Link, useNavigate } from "react-router-dom";
-// import { postNewProducts } from "../../services/postNewProduct.js";
-// import { useDispatch } from "react-redux";
-// import { fetchProducts } from "../../services/fetchProducts.js";
-// import { setProducts } from "../../store/slices/productsSlice.js";
-
-
-
-
-// export default function AddProducts(){
-
-//     // const {isLoggedIn} = useSelector((state) => state.user);
-
-//     // const {userData} = useSelector((state) => state.user);
-
-//     // console.log(userData)
-
-//     const dispatch = useDispatch();
-
-//     const navigate = useNavigate();
-
-
-//     // useEffect(() => {
-//     //     if(isLoggedIn === false || isLoggedIn === null){
-//     //         return navigate("/")
-//     //     } else {
-//     //         dispatch(setUserLoggedIn())
-//     //     }
-//     // // eslint-disable-next-line react-hooks/exhaustive-deps
-//     // }, [isLoggedIn]);
-    
-//     const [state, setState] = useState({
-//         product_name: "",
-//         price: "",
-//         category: "",
-//         product_description: ""
-//     });
-    
-//     useEffect(() => {
-//         console.log(state)
-//     }, [state])
-    
-//     const handleChange = (e) => {
-//         setState((prev) => {
-//             console.log(state)
-//             return {
-//                 ...prev,
-//                 [e.target.name] : e.target.value
-//             }
-
-//         })
-//     }
-
-//     const handleSubmit = (e) => {
-//         e.preventDefault();
-//         postNewProducts(state.product_name, state.price, state.category, state.product_description)
-//         .then(resp => resp.json())
-//         .then(data => {
-//             console.log(data)
-//                 return navigate("/addProductSuccess")
-//         })
-//         .then(() => {
-//             fetchProducts()
-//             .then(resp => resp.json())
-//             .then(data => {
-                
-//                 dispatch(setProducts(data))
-//             });
-//         })
-//         .catch(err => console.log(err))
-//     }
-
-//     return (
-
-//         <div className={styles.addProducts}>
-//             <div className={styles.addProducts__div}>
-//                 <form className={styles.addProducts__form} name="form" onSubmit={handleSubmit} id="addProductForm" >
-                    
-//                     <h4 className={styles.addProducts__title}>Agregar producto</h4>
-                    
-//                     <input className={styles.addProducts__input} type="text" name="product_name" placeholder="Nombre del producto" required onChange={handleChange}/>
-//                     <input className={styles.addProducts__input} type="text" name="price" placeholder="precio del producto" required onChange={handleChange}/>
-//                     <input className={styles.addProducts__input} type="text" name="category" placeholder="Categoria" required onChange={handleChange}/>
-//                     <textarea className={styles.addProducts__input} type="text" name="product_description" placeholder="Descripcion del producto" onChange={handleChange}/>
-
-//                     {/* <input className={styles.addProducts__fileInput} id="product_image" type="file" name="product_image" placeholder="Puedes subir una imagen del producto" onChange={handleChange}/> */}
-                    
-//                     <button type="submit" className={styles.profile__buttonLogin} >Agregar</button>
-//                 </form>
-//                 <p className={styles.profile_crearCuenta}><Link to={"/myProducts"}>Cancelar</Link></p>   
-//             </div>   
-//         </div>
-        
-//     )
-
-// }
-
 
 import styles from "./AddAndEditProducts.module.css";
 import { useEffect, useState } from "react";
@@ -112,6 +13,11 @@ export default function AddAndEditProducts() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const {id} = useParams();
+
+    function fixedPrice(string){
+        return Number(string).toFixed(2)
+    }
+
     
     const [state, setState] = useState({
         product_name: "",
@@ -133,7 +39,7 @@ export default function AddAndEditProducts() {
                 .then(data => {
                     setState({
                         product_name: data.product_name,
-                        price: data.price,
+                        price: fixedPrice(data.price),
                         category: data.category,
                         product_description: data.product_description
                     });
@@ -157,7 +63,7 @@ export default function AddAndEditProducts() {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (isEditMode) {
-            updateProduct(id, state.product_name, state.price, state.category, state.product_description, image)
+            updateProduct(id, state.product_name, fixedPrice(state.price), state.category, state.product_description, image)
                 .then(resp => resp.json())
                 .then(data => {
                     console.log(data);
@@ -172,7 +78,7 @@ export default function AddAndEditProducts() {
                 })
                 .catch(err => console.log(err));
         } else {
-            postNewProducts(state.product_name, state.price, state.category, state.product_description, image)
+            postNewProducts(state.product_name, fixedPrice(state.price), state.category, state.product_description, image)
                 .then(resp => resp.json())
                 .then(data => {
                     console.log(data);

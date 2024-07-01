@@ -17,8 +17,7 @@ export default function Categories({product_category = null}){
     const {selectedCategory} = useSelector(state => state.products)
 
     const {id} = useParams();
-    console.log("soy id de producto", id)
-
+    
 
     useEffect(() => {
         if(!category && product_category){
