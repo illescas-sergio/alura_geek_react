@@ -21,10 +21,6 @@ export default function Card({id, name, price, imageUrl, my_products = null, han
         .then(resp => resp.json())
         .then(data => {
           
-            if(data.price){
-                data.price = data.price.toFixed(2);
-            }
-            
             dispatch(setDetail(data))
             navigate(`/product/${id}`)
         })

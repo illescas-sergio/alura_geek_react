@@ -6,7 +6,7 @@ import ButtonsConsole from "../../Components/ButtonsConsole/ButtonsConsole";
 import AddToCartButton from "../../Components/AddToCartButton/AddToCartButton.jsx";
 import BuyButton from "../../Components/BuyButton/BuyButton.jsx";
 import SimilProds from "../../Components/SimilProds/SimilProds.jsx";
-
+import { fixedPrice } from "../../helpers/fixedPrice.js";
 
 
 export default function ProductDetail(){  
@@ -30,7 +30,7 @@ export default function ProductDetail(){
                                 </Container> */}
                                 
                                 <div className={styles.detalle__producto__titulo}>{detail.product_name}</div>
-                                <div className={styles.detalle__producto__precio}>${detail.price}</div>
+                                <div className={styles.detalle__producto__precio}>${fixedPrice(detail.price)}</div>
                                 <div className={styles.detalle__producto__descripcion}>{detail.product_description}</div>
                             </div>
                         </div>
@@ -39,7 +39,7 @@ export default function ProductDetail(){
 
                 <ButtonsConsole>
                     {
-                        isLoggedIn && <AddToCartButton />
+                        isLoggedIn && <AddToCartButton />// Esto no es un link, tiene que agregar al carrito de compra a este producto
                     }
                                         
                     <BuyButton />

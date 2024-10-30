@@ -8,22 +8,19 @@ import { updateProduct } from "../../services/updateProduct.js";
 import { useDispatch } from "react-redux";
 import { fetchProducts } from "../../services/fetchProducts.js";
 import { setProducts } from "../../store/slices/productsSlice.js";
+import { fixedPrice } from "../../helpers/fixedPrice.js";
 
 export default function AddAndEditProducts() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const {id} = useParams();
 
-    function fixedPrice(string){
-        return Number(string).toFixed(2)
-    }
 
-    
     const [state, setState] = useState({
         product_name: "",
         price: "",
         category: "",
-        product_description: ""
+        product_description: "",
     });
 
     const [image, setImage] = useState(null);
@@ -37,12 +34,14 @@ export default function AddAndEditProducts() {
             fetchProductDetails(id)
                 .then(resp => resp.json())
                 .then(data => {
+                    console.log(data)
                     setState({
                         product_name: data.product_name,
-                        price: fixedPrice(data.price),
+                        price: data.price,
                         category: data.category,
                         product_description: data.product_description
                     });
+                    setImage(data.product_image)
                 })
                 .catch(err => console.log(err));
         }
@@ -94,7 +93,7 @@ export default function AddAndEditProducts() {
                 .catch(err => console.log(err));
         }
     }
-
+    
     return (
         <div className={styles.addProducts}>
             <div className={styles.addProducts__div}>

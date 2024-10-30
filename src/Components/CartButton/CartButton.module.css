@@ -1,0 +1,44 @@
+.profile__button {
+    background-color: var(--color-fondo-blanco);
+    border: none;
+    color: var(--color-botones);
+    display: flex;
+    font-weight: 400;
+    font-size: 16px;
+    height: 24px;
+    justify-content: center;
+    line-height: 19px;
+    width: 100%;
+}
+
+.profile__button:hover {
+    
+    border: 1px solid var(--color-botones);
+    color: var(--color-fuente);
+    font-weight: 700;
+    
+}
+
+/*tablet*/
+@media (max-width: 768px) {
+
+    .profile__button {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 16px;
+        height: 40px;
+        width: 166px;     
+    }  
+}
+  
+/*mobile*/
+@media only screen and (max-width: 480px) {
+
+    .profile__button {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 16px;
+        height: 40px;
+        width: 133px;     
+    }      
+}

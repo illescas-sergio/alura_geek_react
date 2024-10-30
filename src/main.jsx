@@ -17,9 +17,9 @@ import Home from "./pages/Home/Home.jsx"
 import Categories from './pages/Categories/Categories.jsx';
 import MyProducts from './pages/MyProducts/MyProducts.jsx';
 import LogoutSuccess from './pages/LogoutSuccess/LogoutSuccess.jsx';
-
 import AddProductSuccess from './pages/AddProductSuccess/AddProductSuccess.jsx';
 import AddAndEditProducts from './pages/AddAndEditProducts/AddAndEditProducts.jsx';
+import Cart from './pages/Cart/Cart.jsx';
 
 
 
@@ -67,6 +67,10 @@ const router = createBrowserRouter([
       {
         path: "/editprofile",
         element: <EditProfile />
+      },
+      {
+        path: "/cart",
+        element: <Cart />
       },
     ]
   },

@@ -62,7 +62,7 @@ export default function Login(){
                 return navigate("/home")
             })
             .catch(error => {
-            console.error('Error:', error);
+            console.error('Error:', error); //Acá debería poner un alert o algo para avisar que no pudiste iniciar sesion
                 return navigate("/")
             });
     }

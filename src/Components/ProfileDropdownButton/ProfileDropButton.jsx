@@ -3,6 +3,7 @@ import styles from './ProfileDropdown.module.css'; // Asegúrate de crear este a
 import ProfileButton from '../ProfileButton/ProfileButton.jsx';
 import LogoutButton from '../LogoutButton/LogoutButton.jsx';
 import MyProductsButton from '../MyProductsButton/MyProductsButton.jsx';
+import CartButton from '../CartButton/CartButton.jsx';
 
 const ProfileDropdownButton = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,6 +25,7 @@ const ProfileDropdownButton = () => {
         <div className={`${styles.dropdownMenu} ${isOpen ? styles.show : ''}`} onClick={closeDropdown}>
           <ProfileButton />
           <MyProductsButton />
+          <CartButton />
           <LogoutButton />
         </div>
       )}
