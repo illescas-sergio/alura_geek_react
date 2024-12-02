@@ -9,10 +9,11 @@ import SimilProds from "../../Components/SimilProds/SimilProds.jsx";
 import { fixedPrice } from "../../helpers/fixedPrice.js";
 
 
+
 export default function ProductDetail(){  
     
     const {detail} = useSelector(state => state.products);
-    const {isLoggedIn} = useSelector(state => state.user)
+    const {isLoggedIn} = useSelector(state => state.user);
         
     
     return (
@@ -39,7 +40,8 @@ export default function ProductDetail(){
 
                 <ButtonsConsole>
                     {
-                        isLoggedIn && <AddToCartButton />// Esto no es un link, tiene que agregar al carrito de compra a este producto
+                        isLoggedIn && <AddToCartButton name={detail.product_name} price={fixedPrice(detail.price)}/>// Esto no es un link, tiene que agregar al carrito de compra a este producto
+                        // Es más, tiene que aparecer un alerta, o algo así, que diga "producto agregado al carrito"
                     }
                                         
                     <BuyButton />

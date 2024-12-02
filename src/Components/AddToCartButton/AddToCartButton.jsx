@@ -1,9 +1,11 @@
+import { addProductToCart } from "../../helpers/cartProductLoader";
 import styles from "./AddToCartButton.module.css";
 
-export default function AddToCartButton() {
+// eslint-disable-next-line react/prop-types
+export default function AddToCartButton({name, price}) {
 
     return (
-        <div onClick={() => console.log("click en agregar al carrito y tengo que agregar el producto al estado")}>
+        <div onClick={() => addProductToCart(name, price)}>
             <button className={styles.buyButton}>Agregar al carrito</button>
         </div>
     )
