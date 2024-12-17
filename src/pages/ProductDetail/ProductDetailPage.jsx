@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { /*useDispatch,*/ useSelector } from "react-redux";
 import Container from "../../Components/Container/Container";
 import styles from "./ProductDetail.module.css";
 // import { useEffect } from "react";
@@ -7,6 +7,9 @@ import AddToCartButton from "../../Components/AddToCartButton/AddToCartButton.js
 import BuyButton from "../../Components/BuyButton/BuyButton.jsx";
 import SimilProds from "../../Components/SimilProds/SimilProds.jsx";
 import { fixedPrice } from "../../helpers/fixedPrice.js";
+// import { addProductsToCart } from "../../store/slices/productsCartSlice.js";
+// import fetchAddToCart from "../../services/fetchAddToCart.js";
+// import { addProductToCart } from "../../helpers/cartProductLoader.js";
 
 
 
@@ -14,7 +17,10 @@ export default function ProductDetail(){
     
     const {detail} = useSelector(state => state.products);
     const {isLoggedIn} = useSelector(state => state.user);
-        
+
+    // const dispatch = useDispatch()
+
+
     
     return (
         <main className={styles.detalle__producto}>
@@ -25,11 +31,7 @@ export default function ProductDetail(){
                             <div className={styles.detalle__producto__principalImg}>
                                 <img src={detail.product_image} alt="" />
                             </div>
-                            <div className={styles.detalle__producto__principalDescripcion}>
-                                {/* <Container>
-                                    <div className={styles.detalle__menuExtra}><button>...</button></div>
-                                </Container> */}
-                                
+                            <div className={styles.detalle__producto__principalDescripcion}>                                
                                 <div className={styles.detalle__producto__titulo}>{detail.product_name}</div>
                                 <div className={styles.detalle__producto__precio}>${fixedPrice(detail.price)}</div>
                                 <div className={styles.detalle__producto__descripcion}>{detail.product_description}</div>
@@ -40,8 +42,8 @@ export default function ProductDetail(){
 
                 <ButtonsConsole>
                     {
-                        isLoggedIn && <AddToCartButton name={detail.product_name} price={fixedPrice(detail.price)}/>// Esto no es un link, tiene que agregar al carrito de compra a este producto
-                        // Es más, tiene que aparecer un alerta, o algo así, que diga "producto agregado al carrito"
+                        isLoggedIn && <AddToCartButton />
+                        // Tiene que aparecer un alerta, o algo así, que diga "producto agregado al carrito"
                     }
                                         
                     <BuyButton />

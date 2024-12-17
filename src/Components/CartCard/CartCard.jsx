@@ -36,7 +36,9 @@ export default function CartCard({id, name, price, imageUrl, quantity}){
         </div>
         <div className={styles.card__details__area}>
             <div className={styles.card__title}>{name}</div>
-            <Link onClick={() => handleClick(id)} className={styles.card__details}>Ver producto</Link>
+            <div className={styles.details__link}>
+                <Link onClick={() => handleClick(id)} className={styles.card__details}>Ver producto</Link>
+            </div>
         </div>
         <div className={styles.card__details__area}>
             <div className={styles.card__priceTitle}>
@@ -51,6 +53,9 @@ export default function CartCard({id, name, price, imageUrl, quantity}){
                     <button> - </button>
                     <button> + </button>
             </div>
+
+            <button className={styles.profile__button}>Eliminar</button>
+
         </div>
         <div className={styles.card__details__area}>
             <div className={styles.card__priceTitle}>SubTotal</div>

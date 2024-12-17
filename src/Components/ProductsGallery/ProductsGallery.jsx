@@ -6,6 +6,7 @@ import { fetchProducts } from '../../services/fetchProducts';
 import { setProducts } from '../../store/slices/productsSlice';
 import { useEffect } from 'react';
 import Sections from '../Sections/Sections';
+import NoContentComponent from '../NoContentComponent/NoContent';
 
 
 // eslint-disable-next-line no-unused-vars, react/prop-types
@@ -16,42 +17,38 @@ export default function ProductsGallery(){
     const dispatch = useDispatch()
 
     useEffect(() => {
-       
-        if(products.length === 0){
-            
-            fetchProducts()
-            .then(resp => resp.json())
-            .then(data => {
-                //Tengo que modificar desde acá si la data va a venir paginada!!
-                // console.log(data)
-                // const results = data.results; 
-                // dispatch(setProducts(results))
-                dispatch(setProducts(data))
-            });
-        }
+        
+        fetchProducts()
+        .then(resp => {
+            return resp.json()
+        })
+        .then(data => {
+        //Tengo que modificar desde acá si la data va a venir paginada!!
+            return dispatch(setProducts(data))
+        });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [products]);
+    }, []);
 
     const sectionNames = [];
 
-    products.forEach(el=> {
-        if(!sectionNames.includes(el.category)){
-        sectionNames.push(el.category)
-        }
-    });
+    if(products.length !== 0){
+        products.forEach(el=> {
+            if(!sectionNames.includes(el.category)){
+            sectionNames.push(el.category)
+            }
+        });
+    } 
+    
            
     return (
-    
+        
         <main className={styles.main} >
-
             {
-                sectionNames.map(el => {
+                sectionNames.length > 0 ? sectionNames.map(el => {
                     return <Sections key={el} sectionId={el} productos={products} />                 
-                }) 
+                }) : <NoContentComponent />
             }
-
         </main>
-    
     )
 
 }
