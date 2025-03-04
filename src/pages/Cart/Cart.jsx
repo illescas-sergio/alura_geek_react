@@ -18,7 +18,9 @@ import Container from "../../Components/Container/Container.jsx";
 export default function Cart(){
 
     const {productsToBuy} = useSelector((state) => state.cart); //ACá temgo que llamar el estado global carrito
-    console.log(productsToBuy)
+    console.log(productsToBuy, "soy el estado carrito")
+
+    const sectionId = "Mi Carrito"
 
 
     return (
@@ -26,7 +28,7 @@ export default function Cart(){
             <section className={styles.products__group}>
                 <Container>
                     <div className={styles.products__menu}>
-                        <h3 className={styles.products__title}>{}</h3>
+                        <h3 className={styles.products__title}>{sectionId}</h3>
                         <div>
                             <Link to={"/home"}><button className={styles.products__ver}><div>Volver</div><div className={styles.products__verFlecha}></div></button></Link>
                         </div> 
@@ -35,7 +37,7 @@ export default function Cart(){
                     {
                         productsToBuy.length ? 
                         productsToBuy.map(el => (
-                            <CartCard key={el.id} name={el.product_name} imageUrl={el.product_image} price={el.price} sectionId={el.category} quantity={el.product_quantity} description={el.product_description} id={el.id} my_products={location.pathname} handleDelete={""} handleEdit={""}/>
+                            <CartCard key={el.id} name={el.product_name} imageUrl={el.product_image} price={el.price} sectionId={el.category} quantity={el.quantity} id={el.product} my_products={location.pathname} handleDelete={""} handleEdit={""}/>
                         )) 
                         : <NoContentComponent />
                     }

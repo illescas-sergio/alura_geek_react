@@ -11,6 +11,7 @@ import { Link, useLocation } from "react-router-dom";
 import AddProductButton from "../../Components/AddProductButton/AddProductButton.jsx";
 import { deleteProduct } from "../../services/deleteProduct.js";
 import { fetchProducts } from "../../services/fetchProducts.js";
+import NoContentComponent from "../../Components/NoContentComponent/NoContent.jsx";
 
 
 
@@ -72,19 +73,25 @@ export default function MyProducts(){
             <section className={styles.products__group}>
                 <Container>
                     <div className={styles.products__menu}>
-                    <h3 className={styles.products__title}>{sectionId}</h3>
-                    <div>
-                        <Link to={"/home"}><button className={styles.products__ver}><div>Volver</div><div className={styles.products__verFlecha}></div></button></Link>
-                    </div> 
+                        <h3 className={styles.products__title}>{sectionId}</h3>
+                        <div>
+                            <Link to={"/home"}><button className={styles.products__ver}><div>Volver</div><div className={styles.products__verFlecha}></div></button></Link>
+                        </div> 
                     </div>
-                    <div className={styles.products__items}>
                     {
-                        usersProducts.map(el => (
-                            <Card key={el.id} name={el.product_name} imageUrl={el.product_image} price={el.price} sectionId={el.category} description={el.product_description} id={el.id} my_products={location.pathname} handleDelete={handleDelete} handleEdit={handleEdit}/>
-                        ))
-                    }
-                    
-                    </div>
+                        usersProducts.length ? (
+                            <div className={styles.products__items}>
+                                {
+                                     usersProducts.map(el => (
+                                        <Card key={el.id} name={el.product_name} imageUrl={el.product_image} price={el.price} sectionId={el.category} description={el.product_description} id={el.id} my_products={location.pathname} handleDelete={handleDelete} handleEdit={handleEdit}/>
+                                    ))
+                                    
+                                }
+                            </div>
+                        ) : <NoContentComponent />
+                            
+                            
+                    }                    
                 </Container>  
             </section>
                 <ButtonsConsole>

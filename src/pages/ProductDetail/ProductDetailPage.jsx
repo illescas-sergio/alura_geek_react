@@ -41,7 +41,7 @@ export default function ProductDetail(){
                     })
                     .then(results => {
                         if(data.ok){
-                            dispatch(addProductToCart(results))
+                            dispatch(addProductToCart(results.items))
                         }
                     })
                     .then(() => {

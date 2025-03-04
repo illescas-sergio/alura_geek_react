@@ -9,7 +9,8 @@ const cartSlice = createSlice({
     initialState,
     reducers: {
         addProductToCart: (state, action) => {
-            state.productsToBuy.push(action.payload) || initialState
+            console.log("soy payload", action.payload)
+            state.productsToBuy = action.payload || initialState
         },
         deleteProductFromCart: (state, action) => {
             state.productsToBuy = state.productsToBuy.filter((el) => el.element.id !== action.payload.element.id)
