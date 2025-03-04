@@ -1,23 +1,16 @@
-export default function fetchAddToCart(data){
+export default function fetchGetCartItems(){
 
     const token = localStorage.getItem('token');
-
-    console.log("spy ftech de post", data)
     
     return fetch("http://127.0.0.1:8000/cart/", {
-        method: 'POST',
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json',
           'Authorization' : `Token ${token}`,
         },
         mode: 'cors',
         credentials: 'include',
-        body: JSON.stringify({
-          product_id: data.product_id,
-          quantity: data.quantity
-        })
       })
      
 }
-
 

@@ -1,4 +1,4 @@
-export default function fetchAddToCart(data){
+export default function fetchDeleteFromCart(data){
 
     const token = localStorage.getItem('token');
 
@@ -19,5 +19,4 @@ export default function fetchAddToCart(data){
       })
      
 }
-
 

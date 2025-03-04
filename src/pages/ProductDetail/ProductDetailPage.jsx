@@ -1,15 +1,17 @@
-import { /*useDispatch,*/ useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Container from "../../Components/Container/Container";
 import styles from "./ProductDetail.module.css";
-// import { useEffect } from "react";
 import ButtonsConsole from "../../Components/ButtonsConsole/ButtonsConsole";
 import AddToCartButton from "../../Components/AddToCartButton/AddToCartButton.jsx";
 import BuyButton from "../../Components/BuyButton/BuyButton.jsx";
 import SimilProds from "../../Components/SimilProds/SimilProds.jsx";
 import { fixedPrice } from "../../helpers/fixedPrice.js";
-// import { addProductsToCart } from "../../store/slices/productsCartSlice.js";
-// import fetchAddToCart from "../../services/fetchAddToCart.js";
-// import { addProductToCart } from "../../helpers/cartProductLoader.js";
+import { addProductToCart } from "../../store/slices/productsCartSlice.js";
+import fetchAddToCart from "../../services/fetchAddToCart.js";
+import { useNavigate } from "react-router";
+import fetchGetCartItems from "../../services/fetchGetCartItems.js";
+
+
 
 
 
@@ -18,7 +20,42 @@ export default function ProductDetail(){
     const {detail} = useSelector(state => state.products);
     const {isLoggedIn} = useSelector(state => state.user);
 
-    // const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const productData = {
+        product_id: detail.id,
+        quantity: 1
+    }
+
+    const handleAddProductToCart = (data) => {
+        
+        return fetchAddToCart(data)
+        .then(data => {
+            if(data.ok){
+                try {
+                    fetchGetCartItems()
+                    .then(data => {
+                        const elements = data.json();
+                        return elements
+                    })
+                    .then(results => {
+                        if(data.ok){
+                            dispatch(addProductToCart(results))
+                        }
+                    })
+                    .then(() => {
+                        return navigate("/cart")
+                    })
+                    
+                    
+                } catch(error){
+                    console.error(error)
+                }
+            }
+        })
+        
+    }
 
 
     
@@ -42,7 +79,7 @@ export default function ProductDetail(){
 
                 <ButtonsConsole>
                     {
-                        isLoggedIn && <AddToCartButton />
+                        isLoggedIn && <AddToCartButton productData={productData} handleAddProductToCart={handleAddProductToCart}/>
                         // Tiene que aparecer un alerta, o algo así, que diga "producto agregado al carrito"
                     }
                                         
