@@ -1,8 +1,6 @@
 export default function fetchAddToCart(data){
 
     const token = localStorage.getItem('token');
-
-    console.log("spy ftech de post", data)
     
     return fetch("http://127.0.0.1:8000/cart/", {
         method: 'POST',

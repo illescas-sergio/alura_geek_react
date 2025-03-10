@@ -7,6 +7,8 @@ import { setProducts } from '../../store/slices/productsSlice';
 import { useEffect } from 'react';
 import Sections from '../Sections/Sections';
 import NoContentComponent from '../NoContentComponent/NoContent';
+import fetchGetCartItems from "../../services/fetchGetCartItems.js";
+import { addProductToCart } from "../../store/slices/productsCartSlice.js";
 
 
 // eslint-disable-next-line no-unused-vars, react/prop-types
@@ -26,6 +28,11 @@ export default function ProductsGallery(){
         //Tengo que modificar desde acá si la data va a venir paginada!!
             return dispatch(setProducts(data))
         });
+        fetchGetCartItems()
+        .then(resp => resp.json())
+        .then(data => {
+            dispatch(addProductToCart(data.items))
+        })
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

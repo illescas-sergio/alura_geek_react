@@ -7,22 +7,20 @@ import { setDetail } from "../../store/slices/productsSlice"
 
 
 
+
 // eslint-disable-next-line no-unused-vars
-export default function CartCard({id, name, price, imageUrl, quantity}){
+export default function CartCard({id, name, price, imageUrl, quantity, handleDeleteFromCart, itemId, handleQuantityChange}){
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const handleClick = (idProducto) => {
-        
         fetchProductDetails(idProducto)
         .then(resp => resp.json())
         .then(data => {
-          
             dispatch(setDetail(data))
             navigate(`/product/${id}`)
         })
-
     }
 
     const priceFixed = price.toFixed(2)
@@ -50,11 +48,11 @@ export default function CartCard({id, name, price, imageUrl, quantity}){
             <div className={styles.card__priceTitle}>Cantidad</div>
             <div className={styles.card__price}>{quantity}</div>
             <div className={styles.quantityButtonsDiv}>
-                    <button> - </button>
-                    <button> + </button>
+                    <button value={"-"} onClick={(e) => handleQuantityChange(e, itemId)}> - </button>
+                    <button value={"+"} onClick={(e) => handleQuantityChange(e, itemId)}> + </button>
             </div>
 
-            <button className={styles.profile__button}>Eliminar</button>
+            <button className={styles.profile__button} onClick={() => handleDeleteFromCart(itemId, id)}>Eliminar</button>
 
         </div>
         <div className={styles.card__details__area}>
