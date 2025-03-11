@@ -26,7 +26,6 @@ export default function Cart(){
 
     const sectionId = "Mi Carrito"
 
-
     const handleDeleteFromCart = (id, product) => {
         return fetchDeleteFromCart(id)
         .then(resp => {
@@ -70,8 +69,6 @@ export default function Cart(){
     useEffect(() => {
         console.log(productsToBuy)
     }, [productsToBuy])
-
-    
 
     return (
         <main className={styles.productos}>

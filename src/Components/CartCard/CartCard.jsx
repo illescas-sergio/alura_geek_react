@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { fetchProductDetails } from "../../services/fetchProductDetails";
 import {useDispatch} from "react-redux";
 import { setDetail } from "../../store/slices/productsSlice"
+import { subTotalCalculator } from '../../helpers/subTotalCalculator';
 
 
 
@@ -11,8 +12,8 @@ import { setDetail } from "../../store/slices/productsSlice"
 // eslint-disable-next-line no-unused-vars
 export default function CartCard({id, name, price, imageUrl, quantity, handleDeleteFromCart, itemId, handleQuantityChange}){
 
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleClick = (idProducto) => {
         fetchProductDetails(idProducto)
@@ -21,13 +22,11 @@ export default function CartCard({id, name, price, imageUrl, quantity, handleDel
             dispatch(setDetail(data))
             navigate(`/product/${id}`)
         })
-    }
+    };
 
-    const priceFixed = price.toFixed(2)
+    const priceFixed = price.toFixed(2);
 
     return (
-
-      
     <div className={styles.products__card}>
         <div className={styles.card__img} >
             <img className={styles.cardImg} src={imageUrl} alt={name} />
@@ -57,7 +56,7 @@ export default function CartCard({id, name, price, imageUrl, quantity, handleDel
         </div>
         <div className={styles.card__details__area}>
             <div className={styles.card__priceTitle}>SubTotal</div>
-            <div className={styles.card__price}>{"300"}</div>
+            <div className={styles.card__price}>{subTotalCalculator(priceFixed, quantity)}</div>
         </div>
     </div>
     )
