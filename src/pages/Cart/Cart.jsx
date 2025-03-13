@@ -13,6 +13,7 @@ import fetchDeleteFromCart from "../../services/fetchDeleteFromCart.js";
 import fetchGetCartItems from "../../services/fetchGetCartItems.js";
 import { addProductToCart } from "../../store/slices/productsCartSlice.js";
 import fetchAdjustProductQuantity from "../../services/fetchAdjustProductQuantity.js";
+import TotalDisplay from "../../Components/TotalDisplay/TotalDisplay.jsx";
 // import Sections from "../../Components/Sections/Sections.jsx";
 // import { deleteProduct } from "../../services/deleteProduct.js";
 // import { fetchProducts } from "../../services/fetchProducts.js";
@@ -84,8 +85,11 @@ export default function Cart(){
                     {
                         productsToBuy.length ? 
                         productsToBuy.map(el => (<CartCard key={el.id} name={el.product_name} imageUrl={el.product_image} price={el.price} sectionId={el.category} quantity={el.quantity} id={el.product} itemId={el.id} my_products={location.pathname} handleDeleteFromCart={handleDeleteFromCart} handleQuantityChange={handleQuantityChange} handleEdit={""}/>)
-                        ) 
+                        )
                         : <NoContentComponent />
+                    }
+                    {
+                        productsToBuy.length ?  <TotalDisplay productsToBuy={productsToBuy}/> : null
                     }
                     </div>
                 </Container>
