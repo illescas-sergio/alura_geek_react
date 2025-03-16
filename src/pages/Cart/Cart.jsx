@@ -1,5 +1,5 @@
 import styles from "./Cart.module.css";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { fetchMyProducts } from '../../services/fetchMyProducts.js';
 // import { deleteUsersProduct, setProducts, setUsersProducts } from '../../store/slices/productsSlice.js';
@@ -14,6 +14,7 @@ import fetchGetCartItems from "../../services/fetchGetCartItems.js";
 import { addProductToCart } from "../../store/slices/productsCartSlice.js";
 import fetchAdjustProductQuantity from "../../services/fetchAdjustProductQuantity.js";
 import TotalDisplay from "../../Components/TotalDisplay/TotalDisplay.jsx";
+import { getImageUrl, imageCollector } from "../../helpers/imageSelector.js";
 // import Sections from "../../Components/Sections/Sections.jsx";
 // import { deleteProduct } from "../../services/deleteProduct.js";
 // import { fetchProducts } from "../../services/fetchProducts.js";
@@ -22,10 +23,27 @@ import TotalDisplay from "../../Components/TotalDisplay/TotalDisplay.jsx";
 // eslint-disable-next-line react/prop-types
 export default function Cart(){
 
+    // eslint-disable-next-line no-unused-vars
+    const [images, setImages] = useState([])
+
     const {productsToBuy} = useSelector((state) => state.cart); //ACá temgo que llamar el estado global carrito
+    
+    const {products} = useSelector((state) => state.products);
+
     const dispatch = useDispatch();
 
     const sectionId = "Mi Carrito"
+
+
+    useEffect(() => {
+        console.log("productsToBuy:", productsToBuy);
+        console.log("products:", products);
+        setImages(imageCollector(productsToBuy, products));
+    }, [productsToBuy, products]);
+    
+    useEffect(() => {
+        console.log(images); // Para verificar que images se actualiza correctamente
+    }, [images]);
 
     const handleDeleteFromCart = (id, product) => {
         return fetchDeleteFromCart(id)
@@ -65,11 +83,7 @@ export default function Cart(){
                 .catch(err => {
                     throw new Error(err.message)
                 })
-        }
-
-    useEffect(() => {
-        console.log(productsToBuy)
-    }, [productsToBuy])
+        }  
 
     return (
         <main className={styles.productos}>
@@ -84,7 +98,7 @@ export default function Cart(){
                     <div className={styles.products__items}>
                     {
                         productsToBuy.length ? 
-                        productsToBuy.map(el => (<CartCard key={el.id} name={el.product_name} imageUrl={el.product_image} price={el.price} sectionId={el.category} quantity={el.quantity} id={el.product} itemId={el.id} my_products={location.pathname} handleDeleteFromCart={handleDeleteFromCart} handleQuantityChange={handleQuantityChange} handleEdit={""}/>)
+                        productsToBuy.map(el => (<CartCard key={el.id} name={el.product_name} imageUrl={getImageUrl(el.product, images)} price={el.price} sectionId={el.category} quantity={el.quantity} id={el.product} itemId={el.id} my_products={location.pathname} handleDeleteFromCart={handleDeleteFromCart} handleQuantityChange={handleQuantityChange} handleEdit={""}/>)
                         )
                         : <NoContentComponent />
                     }

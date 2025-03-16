@@ -28,8 +28,7 @@ export default function ProductDetail(){
         quantity: 1
     }
 
-    const handleAddProductToCart = (data) => {
-        
+    const handleAddProductToCart = (data) => {   
         return fetchAddToCart(data)
         .then(data => {
             if(data.ok){
@@ -47,14 +46,11 @@ export default function ProductDetail(){
                     .then(() => {
                         return navigate("/cart")
                     })
-                    
-                    
                 } catch(error){
                     console.error(error)
                 }
             }
         })
-        
     }
 
 

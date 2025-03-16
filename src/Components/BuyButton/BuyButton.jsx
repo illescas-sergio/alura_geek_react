@@ -9,7 +9,7 @@ export default function BuyButton() {
     const navigate = useNavigate()
 
     const handleBuy = () => {
-        return isLoggedIn ? console.log("click en Comprar logueado") : navigate("/login")
+        return isLoggedIn ? navigate("/buy_success") : navigate("/login")
     }
 
     return (

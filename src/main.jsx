@@ -20,6 +20,7 @@ import LogoutSuccess from './pages/LogoutSuccess/LogoutSuccess.jsx';
 import AddProductSuccess from './pages/AddProductSuccess/AddProductSuccess.jsx';
 import AddAndEditProducts from './pages/AddAndEditProducts/AddAndEditProducts.jsx';
 import Cart from './pages/Cart/Cart.jsx';
+import Payment from './pages/Payment/Payment.jsx';
 
 
 
@@ -72,6 +73,10 @@ const router = createBrowserRouter([
         path: "/cart",
         element: <Cart />
       },
+      {
+        path: "/buy_success",
+        element: <Payment />
+      }
     ]
   },
   {

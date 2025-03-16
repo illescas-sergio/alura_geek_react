@@ -27,10 +27,10 @@ export default function TotalDisplay(){
                 <div className={styles.card__img} >
                     {/* <img className={styles.cardImg} src={imageUrl} alt={name} /> */}
                 </div>
-                <div className={styles.card__details__area}>
+                <div className={(styles.card__details__area)}>
                     <div className={styles.card__title}>{"Detalle"}</div>
                     <div className={styles.details__link}>
-                        {/* <Link>Ver producto</Link> */}
+                        {"Total a pagar"}
                     </div>
                 </div>
                 <div className={styles.card__details__area}>
@@ -43,7 +43,7 @@ export default function TotalDisplay(){
                     <div className={styles.card__priceTitle}>Items</div>
                     <div className={styles.card__price}>{TotalItems(productsToBuy)}</div>
                 </div>
-                <div className={styles.card__details__area}>
+                <div className={styles.card__quantity__area}>
                     <div className={styles.card__priceTitle}>Monto Total</div>
                     <div className={styles.card__price}>{TotalCalculator(productsToBuy)}</div>
                 </div>
